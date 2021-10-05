@@ -1,0 +1,45 @@
+<%= form_with(model: paciente) do |form| %>
+  <% if paciente.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(paciente.errors.count, "error") %> prohibited this paciente from being saved:</h2>
+
+      <ul>
+        <% paciente.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :nomeCompleto %>
+    <%= form.text_field :nomeCompleto %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dataNascimento %>
+    <%= form.date_select :dataNascimento %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cpf %>
+    <%= form.text_field :cpf %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <legend>Enderecos:</legend>
+      <%= form.fields_for :enderecos do |enderecos_form| %>
+        <%= render "endereco_fields", f: enderecos_form %>
+      <% end %>
+      <%= link_to_add_fields "Adicionar endereco", form, :enderecos %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
