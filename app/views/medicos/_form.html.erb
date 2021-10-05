@@ -1,10 +1,10 @@
-<%= form_with(model: paciente) do |form| %>
-  <% if paciente.errors.any? %>
+<%= form_with(model: medico) do |form| %>
+  <% if medico.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(paciente.errors.count, "error") %> prohibited this paciente from being saved:</h2>
+      <h2><%= pluralize(medico.errors.count, "error") %> prohibited this medico from being saved:</h2>
 
       <ul>
-        <% paciente.errors.each do |error| %>
+        <% medico.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
@@ -32,11 +32,13 @@
   </div>
 
   <div class="field">
-    <legend>Enderecos:</legend>
-      <%= form.fields_for :enderecos do |enderecos_form| %>
-        <%= render "endereco_fields", f: enderecos_form %>
-      <% end %>
-      <%= link_to_add_fields "Adicionar endereco", form, :enderecos %>
+    <%= form.label :especialidade %>
+    <%= form.text_field :especialidade %>
+  </div>
+
+  <div class="field">
+    <%= form.label :crm %>
+    <%= form.text_field :crm %>
   </div>
 
   <div class="actions">
