@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_05_005012) do
+ActiveRecord::Schema.define(version: 2021_10_05_153311) do
+
+  create_table "consulta", force: :cascade do |t|
+    t.date "data"
+    t.time "horario"
+    t.integer "medico_id", null: false
+    t.integer "paciente_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["medico_id"], name: "index_consulta_on_medico_id"
+    t.index ["paciente_id"], name: "index_consulta_on_paciente_id"
+  end
 
   create_table "enderecos", force: :cascade do |t|
     t.string "cep"
@@ -44,5 +55,7 @@ ActiveRecord::Schema.define(version: 2021_10_05_005012) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "consulta", "medicos"
+  add_foreign_key "consulta", "pacientes"
   add_foreign_key "enderecos", "pacientes"
 end

@@ -10,6 +10,8 @@ class Paciente < ApplicationRecord
     validates :dataNascimento, presence: true
     validates :enderecos, presence: true
     validate :validarDataNascimento
+
+    has_many :consultum, :dependent => :delete_all
     
 
     def validarDataNascimento

@@ -6,10 +6,11 @@ class Medico < ApplicationRecord
     validates :crm, presence: true, uniqueness: true
     validates :dataNascimento, presence: true
     validate :validateDataNascimento
+    has_many :consultum, :dependent => :delete_all
 
     def validateDataNascimento
         if dataNascimento.present? && dataNascimento > Date.today
           errors.add(:dataNascimento, "é uma data invalida")
         end
-      end
+    end
 end
