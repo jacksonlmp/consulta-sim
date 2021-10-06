@@ -1,6 +1,6 @@
 class Paciente < ApplicationRecord
     has_many :enderecos, dependent: :destroy
-    
+    has_many :consultum, :dependent => :delete_all    
     accepts_nested_attributes_for :enderecos, allow_destroy: true, reject_if: :all_blank
 
     #Validates
@@ -9,10 +9,7 @@ class Paciente < ApplicationRecord
     validates :email, presence: true, uniqueness: true, length: {minimum: 5, too_short: "Must have at least 5 characteres ", maximum: 50, too_long: "Must have at maximum 50 characters" }
     validates :dataNascimento, presence: true
     validates :enderecos, presence: true
-    validate :validarDataNascimento
-
-    has_many :consultum, :dependent => :delete_all
-    
+    validate :validarDataNascimento   
 
     def validarDataNascimento
         if dataNascimento.present? && dataNascimento > Date.today

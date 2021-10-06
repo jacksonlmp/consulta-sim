@@ -12,13 +12,13 @@
 
 <p>
   <strong>Medico:</strong>
-  <%= @consultum.medico.nome_completo %>
+  <%= @consultum.medico.nomeCompleto %>
 </p>
 
 <p>
   <strong>Paciente:</strong>
-  <%= @consultum.paciente.nome_completo %>
+  <%= @consultum.paciente.nomeCompleto %>
 </p>
 
-<%= link_to 'Edit', edit_consultum_path(@consultum) %> |
-<%= link_to 'Back', consulta_path %>
+<%= link_to 'Editar', edit_consultum_path(@consultum) %> |
+<%= link_to 'Voltar', consulta_path %>
