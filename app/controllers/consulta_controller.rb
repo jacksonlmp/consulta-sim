@@ -25,7 +25,7 @@ class ConsultaController < ApplicationController
 
     respond_to do |format|
       if @consultum.save
-        format.html { redirect_to @consultum, notice: "Consultum was successfully created." }
+        format.html { redirect_to @consultum, notice: "Consulta criada com SUCESSO." }
         format.json { render :show, status: :created, location: @consultum }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class ConsultaController < ApplicationController
   def update
     respond_to do |format|
       if @consultum.update(consultum_params)
-        format.html { redirect_to @consultum, notice: "Consultum was successfully updated." }
+        format.html { redirect_to @consultum, notice: "Consulta atualizada com SUCESSO." }
         format.json { render :show, status: :ok, location: @consultum }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -51,7 +51,7 @@ class ConsultaController < ApplicationController
   def destroy
     @consultum.destroy
     respond_to do |format|
-      format.html { redirect_to consulta_url, notice: "Consultum was successfully destroyed." }
+      format.html { redirect_to consulta_url, notice: "Consulta deletada com SUCESSO." }
       format.json { head :no_content }
     end
   end

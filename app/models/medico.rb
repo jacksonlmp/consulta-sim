@@ -10,7 +10,7 @@ class Medico < ApplicationRecord
 
     def validateDataNascimento
         if dataNascimento.present? && dataNascimento > Date.today
-          errors.add(:dataNascimento, "é uma data invalida")
+          errors.add(:dataNascimento, "Invalid Date!")
         end
     end
 end

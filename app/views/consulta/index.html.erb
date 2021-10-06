@@ -17,12 +17,12 @@
     <% @consulta.each do |consultum| %>
       <tr>
         <td><%= consultum.data %></td>
-        <td><%= consultum.horario %></td>
+        <td><%= consultum.horario.strftime("%H:%M") %></td>
         <td><%= consultum.medico.nomeCompleto %></td>
         <td><%= consultum.paciente.nomeCompleto %></td>
         <td><%= link_to 'Mostrar', consultum %></td>
         <td><%= link_to 'Editar', edit_consultum_path(consultum) %></td>
-        <td><%= link_to 'Deletar', consultum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Deletar', consultum, method: :delete, data: { confirm: 'Tem certeza que quer deletar?' } %></td>
       </tr>
     <% end %>
   </tbody>
