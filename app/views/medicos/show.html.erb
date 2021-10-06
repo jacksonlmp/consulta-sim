@@ -27,7 +27,31 @@
 
 <p>
   <strong>Crm:</strong>
-  <%= @medico.cpf %>
+  <%= @medico.crm %>
+</p>
+
+<p>
+  <strong>Consultas Marcadas:</strong><br> 
+  <table>
+  <thead>
+    <tr>
+      <th>Data</th>
+      <th>Horario</th>
+      <th>Paciente</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @medico.consultum.each do |consultum| %>
+      <tr>
+        <td><%= consultum.data %></td>
+        <td><%= consultum.horario %></td>
+        <td><%= consultum.paciente.nomeCompleto %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 </p>
 
 <%= link_to 'Editar', edit_medico_path(@medico) %> |
