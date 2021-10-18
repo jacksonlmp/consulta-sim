@@ -3,7 +3,7 @@ class Medico < ApplicationRecord
     validates :cpf, length: {is: 11}, presence: true, uniqueness: true,numericality: { only_integer: true }
     validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }
     validates :especialidade, presence: true
-    validates :crm, presence: true, uniqueness: true
+    validates :crm, presence: true, uniqueness: true, length: {is: 5}
     validates :dataNascimento, presence: true
     validate :validateDataNascimento
     has_many :consultum, :dependent => :delete_all
