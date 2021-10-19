@@ -40,9 +40,17 @@ begin
       ::STATS_DIRECTORIES << %w(Cucumber\ features features) if File.exist?('features')
       ::CodeStatistics::TEST_TYPES << "Cucumber features" if File.exist?('features')
     end
-    
-  end
 
+    task :annotations_setup do
+      Rails.application.configure do
+        if config.respond_to?(:annotations)
+          config.annotations.directories << 'features'
+          config.annotations.register_extensions('feature') { |tag| /#\s*(#{tag}):?\s*(.*)$/ }
+        end
+      end
+    end
+  end
+  
   desc 'Alias for cucumber:ok'
   task cucumber: 'cucumber:ok'
 
@@ -58,7 +66,9 @@ begin
 
   task stats: 'cucumber:statsetup'
 
-  
+
+  task notes: 'cucumber:annotations_setup'
+
 rescue LoadError
   desc 'cucumber rake task not available (cucumber not installed)'
   task :cucumber do
