@@ -50,6 +50,7 @@ begin
       end
     end
   end
+  
   desc 'Alias for cucumber:ok'
   task cucumber: 'cucumber:ok'
 
@@ -65,7 +66,9 @@ begin
 
   task stats: 'cucumber:statsetup'
 
+
   task notes: 'cucumber:annotations_setup'
+
 rescue LoadError
   desc 'cucumber rake task not available (cucumber not installed)'
   task :cucumber do
